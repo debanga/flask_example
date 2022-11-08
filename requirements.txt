@@ -1,0 +1,7 @@
+tensorflow
+keras
+flask
+opencv-python
+flask_cors
+seaborn
+
