@@ -1,32 +1,17 @@
-# Clone the Flask Example Repo
-!git clone https://github.com/debanga/flask_example.git
-
-# Change directory
-import os
-os.chdir('flask_example')
-
-# Install server
-!pip install flask-ngrok
-
-# Import Packages
-import cv2
-import pickle
+# Flask utils
 from flask import Flask, request, render_template
-from flask_ngrok import run_with_ngrok
-
-# Setup authentication to a server
-!pip install pyngrok==4.1.1
-!ngrok authtoken '2HJViua5UWeAKa86oO8U3B5lEg7_5C4843xVvLTC1m91EfMbZ'
+import os
+import cv2
+import pickle as pkl
 
 # Initialize a Flask app and connect with the server
 app = Flask(__name__)
-run_with_ngrok(app)  
 
 # Process image and predict label
 def processImg(IMG_PATH):
     # Load model
     with open("model.pkl", "rb") as f:
-        model = pickle.load(f)
+        model = pkl.load(f)
     
     # Read and preprocess image
     image = cv2.imread(IMG_PATH)
